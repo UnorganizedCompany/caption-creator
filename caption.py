@@ -51,7 +51,7 @@ class CaptionCreator():
                 pxs[capX+x, capY+nameH+y] = (0, 0, 0, 0)
 
         for y in range(textH):
-            for x in range(textW):
+            for x in range(capW-nameW):
                 pxs[capX+nameW+x, capY+y] = (0, 0, 0, 128)
 
         draw = ImageDraw.Draw(self.im)
