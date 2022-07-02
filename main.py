@@ -16,6 +16,7 @@ if __name__=="__main__":
                 state = "index"
                 if not "text" in srt:
                     continue
+                print(srt["text"])
                 tc = caption.CaptionCreator(srt["text"].strip().split("\n"))
                 tc.save("./dist/"+srt['id']+".png")
                 continue

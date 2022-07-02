@@ -10,7 +10,11 @@ class CaptionCreator():
     space_between_lines = 10
     def __init__(self, texts):
         namefnt = ImageFont.truetype("./DOSMyungjo.ttf", encoding="UTF-7", size=50)
-        name = "재문"
+        name = ""
+        if ":" in texts[0]:
+            splitted = texts[0].split(":")
+            name = splitted[0].strip()
+            texts[0] = ":".join(splitted[1:])
         nameW, nameH = namefnt.getsize(name)
 
         fnt = ImageFont.truetype("./DOSMyungjo.ttf", encoding="UTF-8", size=50)
