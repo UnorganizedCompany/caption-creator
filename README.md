@@ -42,6 +42,10 @@
     * **srt 파일에 명시한 것과 동일한 값이 사용해야 함**
     * 만약 color-map.yml에 srt 파일에 명시한 이름이 없다면 테두리가 생성되지 않음
 5. main.py 실행
-    ```python
+    ```shell
     python main.py srt_file.srt
+    ```
+6. 만약 video 생성까지 수행하고 싶다면 argument로 비디오 이름을 함께 입력(확장자 없이 입력해야 함)
+    ```shell
+    python main.py srt_file.srt video_name
     ```
