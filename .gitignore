@@ -4,5 +4,6 @@ dist
 *.srt
 !example.srt
 venv
-images
+image/**
+!image/test*.png
 .idea
