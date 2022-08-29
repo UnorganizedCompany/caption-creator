@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 import yaml
 
 
-class CaptionCreator():
+class CaptionCreator:
     with open('color_map.yml') as c:
         color_map = yaml.load(c, Loader=yaml.FullLoader)
 
