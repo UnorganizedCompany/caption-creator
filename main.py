@@ -7,7 +7,7 @@ import sys
 
 if __name__=="__main__":
     srt_path = sys.argv[1]
-    with open(srt_path, "r") as srt_file:
+    with open(srt_path, "r", encoding="UTF-8") as srt_file:
         state = "index" # index, time, text
         srt = {}
         for l in srt_file:
