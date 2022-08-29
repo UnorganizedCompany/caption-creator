@@ -3,6 +3,7 @@
 
 import caption
 import os
+import sys
 from parse import *
 
 if __name__ == "__main__":
@@ -12,7 +13,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 2:
         video_build = True
         output_filename = sys.argv[2]  # should not include file extension
-    with open(srt_path, "r") as srt_file:
+    with open(srt_path, "r", encoding="UTF-8") as srt_file:
         state = "index"  # index, time, text
         caption_info = []
         latest_end_time = -1
