@@ -63,5 +63,5 @@ if __name__ == "__main__":
             f.write(info + "\n")
         f.close()
 
-        os.system("ffmpeg -f concat -safe 0 -i {0} -vf \"settb=AVTB,fps=30\" -vcodec png -r 30 {1}.mov -y" \
+        os.system("ffmpeg -f concat -safe 0 -i {0} -vf \"settb=AVTB,fps=30\" -vcodec png -r 30 {1} -y" \
                   .format(caption_info_filename, caption_video_filename))

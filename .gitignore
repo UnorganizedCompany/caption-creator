@@ -7,3 +7,5 @@ venv
 image/**
 !image/test*.png
 .idea
+*.txt
+*.mov
