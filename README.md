@@ -39,7 +39,8 @@
       b: 20
       a: 256
     ```
-    * **srt 파일에 명시한 것과 동일한 값이 존재해야 함**
+    * **srt 파일에 명시한 것과 동일한 값이 사용해야 함**
+    * 만약 color-map.yml에 srt 파일에 명시한 이름이 없다면 테두리가 생성되지 않음
 5. main.py 실행
     ```python
     python main.py srt_file.srt
