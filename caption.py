@@ -4,13 +4,17 @@
 from PIL import Image, ImageDraw, ImageFont
 import random
 import sys
+# import pyyaml like something
 
 class CaptionCreator():
     space_between_name_text = 10
     space_between_lines = 10
     space_bootom = 50
+    border_width = 4
+
     def __init__(self, texts):
         namefnt = ImageFont.truetype("./DOSMyungjo.ttf", encoding="UTF-7", size=65)
+        # namefnt 대신 nameimage를 가져와서 그 위치에 집어넣어야 한다
         name = ""
         if ":" in texts[0]:
             splitted = texts[0].split(":")
@@ -41,6 +45,11 @@ class CaptionCreator():
 
         # color 242, 242, 242 for name
         pxs = self.im.load()
+
+        for y in range(self.border_width):
+            for x in range(textW + self.space_between_name_text):
+                pxs[capX+nameW+x, capY-y] = (20, 20, 200, 256)
+
         for y in range(nameH):
             for x in range(nameW):
                 pxs[capX+x, capY+y] = (242, 242, 242)
