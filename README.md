@@ -6,4 +6,4 @@
 ```python
   python main.py file_name.srt video_name
 ```
-* caption image 생성만 필요한 경우도 있을 것 같아 PR은 close 
+* video_name을 입력하지 않으면 기존과 같이 이미지만 생성함
