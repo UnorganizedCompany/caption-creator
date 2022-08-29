@@ -5,4 +5,5 @@ dist
 !example.srt
 venv
 images
+.idea
 
