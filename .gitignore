@@ -9,3 +9,4 @@ image/**
 .idea
 *.txt
 *.mov
+color_map.yml
