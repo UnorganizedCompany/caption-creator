@@ -26,8 +26,6 @@ class CaptionCreator():
             if w > textW:
                 textW = w
             textH += h
-        #  while fnt.getsize(texts[0])[0] < maxW:
-            #  texts[0] += " "
 
         textH += self.space_between_lines*(len(texts)-1)
 
