@@ -18,6 +18,7 @@ class App(QWidget):
         self.filePathEdit = QLineEdit(self)
         self.outputPathEdit = QLineEdit(self)
         self.outputPathButton = QPushButton("Output Path 선택", self)
+        self.imageGenButton = QPushButton("이미지 생성하기", self)
 
         self.video_tab = QWidget()
         self.video_tab_layout = QVBoxLayout()
@@ -50,6 +51,9 @@ class App(QWidget):
 
         self.filePathEdit.setReadOnly(True)
         self.srt_tab_layout.addWidget(self.filePathEdit)
+
+        self.imageGenButton.clicked.connect(self.generateImage)
+        self.srt_tab_layout.addWidget(self.imageGenButton)
 
         self.outputPathEdit.setText(f"{os.getcwd()}/dist/")
         self.outputPathEdit.setReadOnly(True)
@@ -88,22 +92,14 @@ class App(QWidget):
     def dropEvent(self, e):
         filepath = e.mimeData().urls()[0].toLocalFile()
         if filepath.endswith('.srt'):
-            self.fileLabel.setText(filepath)
-            reader = FileReader(filepath)
-            self.captions = reader.get_captions()
-            mm_generator.generate_image(reader.get_captions(), self.outputPathEdit.text().strip())
-            self.video_tab.setEnabled(True)
+            self.filePathEdit.setText(filepath)
         else:
             QMessageBox.warning(self, "경고", "SRT 파일만 가능합니다!")
 
     def openFileBrowser(self, e):
         filepath, _ = QFileDialog.getOpenFileName(self, "SRT 파일 선택", "", "SRT Files (*.srt)")
         if filepath.endswith('.srt'):
-            self.fileLabel.setText(filepath)
-            reader = FileReader(filepath)
-            self.captions = reader.get_captions()
-            mm_generator.generate_image(reader.get_captions(), self.outputPathEdit.text().strip())
-            self.video_tab.setEnabled(True)
+            self.filePathEdit.setText(filepath)
         else:
             QMessageBox.warning(self, "경고", "SRT 파일만 가능합니다!")
         super().mousePressEvent(e)
@@ -132,6 +128,18 @@ class App(QWidget):
             return
 
         mm_generator.generate_video(self.captions, output_path)
+
+    def generateImage(self):
+        filepath = self.filePathEdit.text()
+
+        if len(filepath) == 0:
+            QMessageBox.warning(self, "경고", "파일을 먼저 선택해주세요")
+            return
+
+        reader = FileReader(filepath)
+        self.captions = reader.get_captions()
+        mm_generator.generate_image(reader.get_captions(), self.outputPathEdit.text().strip())
+        self.video_tab.setEnabled(True)
 
     def generateSingleImage(self):
         output_path = self.outputPathEdit.text().strip()
